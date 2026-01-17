@@ -16,8 +16,10 @@ public class GoogleTest extends BaseTest {
 		
 		String title=google.getTitle();
 		System.out.println("The Title is "+title);
+		google.open();
+		Assert.fail("Testing screenshot artifact");
+
 		
-		Assert.fail("Testing CI screenshot upload");
 
 
 		}
