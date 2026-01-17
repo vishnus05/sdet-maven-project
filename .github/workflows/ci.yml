@@ -24,6 +24,15 @@ jobs:
       - name: Run Maven tests
         run: mvn -q test
 
+      - name: Debug - list png and target folder
+        if: always()
+        run: |
+          echo "PWD=$(pwd)"
+          echo "List target (if exists):"
+          ls -la target || true
+          echo "Find any screenshots (.png):"
+          find . -maxdepth 5 -type f -name "*.png" -print || true
+
       - name: Upload screenshots on failure
         if: failure()
         uses: actions/upload-artifact@v4
