@@ -33,10 +33,14 @@ jobs:
           echo "Find any screenshots (.png):"
           find . -maxdepth 5 -type f -name "*.png" -print || true
 
-      - name: Upload screenshots on failure
+           - name: Upload screenshots on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: selenium-screenshots
-          path: target/screenshots
+          path: |
+            **/*.png
+            target/surefire-reports/**
+          if-no-files-found: warn
+              
 
