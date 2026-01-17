@@ -1,8 +1,9 @@
 package com.vishnu.automation.base;
-
+import com.vishnu.automation.utils.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -28,7 +29,11 @@ public class BaseTest {
 	}
 	
 	@AfterMethod
-	public void teardown() {
+	public void teardown(ITestResult result) {
+		if(result.getStatus()==ITestResult.FAILURE)
+		{
+			ScreenshotUtil.takeScreenshot(driver, result.getName());
+		}
 		
 		if(driver !=null)
 		{

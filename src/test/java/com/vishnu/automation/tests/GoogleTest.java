@@ -17,6 +17,7 @@ public class GoogleTest extends BaseTest {
 		String title=google.getTitle();
 		System.out.println("The Title is "+title);
 		
-		Assert.assertTrue(title.toLowerCase().contains("google"));
+		Assert.fail("Forcing failure to test screenshot capture");
+
 		}
 }
